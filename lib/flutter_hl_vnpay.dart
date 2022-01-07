@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/services.dart';
 class FlutterHlVnpay {
   final MethodChannel _channel = const MethodChannel('flutter_hl_vnpay');
   final StreamController<MethodCall> _methodStreamController = new StreamController.broadcast();
+
   Stream<MethodCall> get _methodStream => _methodStreamController.stream;
 
   FlutterHlVnpay._() {
@@ -16,13 +16,14 @@ class FlutterHlVnpay {
   }
 
   static FlutterHlVnpay _instance = new FlutterHlVnpay._();
+
   static FlutterHlVnpay get instance => _instance;
 
   Future<int?> show({
     required String paymentUrl,
     required String tmnCode,
+    required bool isSandbox,
     String scheme = '',
-    bool isSandbox = true,
     String backAlert = 'Bạn có chắc chắn trở lại ko?',
     String title = 'Nạp tiền qua VNPay',
     String iconBackName = 'AppIcon',
@@ -30,7 +31,6 @@ class FlutterHlVnpay {
     String endColor = '#00B14F',
     String titleColor = '#FFFFFF',
   }) async {
-
     final params = <String, dynamic>{
       "scheme": scheme,
       "isSandbox": isSandbox,

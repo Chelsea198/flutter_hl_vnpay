@@ -112,8 +112,8 @@ class FlutterHlVnpayPlugin : FlutterPlugin, ActivityAware, PluginRegistry.Activi
             //Tạo nút sự kiện cho user click từ return url của merchant chuyển hướng về URL: http://success.sdk.merchantbackapp
             //vnp_ResponseCode == 00) / Giao dịch thành công
         }
-        //activityBinding?.activity?.startActivity(intent)
-        activityBinding?.activity?.startActivityForResult(intent, 99)
+        activityBinding?.activity?.startActivity(intent)
+        //activityBinding?.activity?.startActivityForResult(intent, 99)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
